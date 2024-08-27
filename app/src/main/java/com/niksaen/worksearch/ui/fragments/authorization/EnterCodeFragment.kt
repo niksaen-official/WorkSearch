@@ -32,18 +32,19 @@ class EnterCodeFragment : Fragment() {
         val previewText = ui.previewText.text.toString()+email
         ui.previewText.text = previewText
 
-        ui.digit1.doOnTextChanged { text, start, before, count -> onTextChangeAction(0,text) }
-        ui.digit2.doOnTextChanged { text, start, before, count -> onTextChangeAction(1,text) }
-        ui.digit3.doOnTextChanged { text, start, before, count -> onTextChangeAction(2,text) }
+        ui.digit1.doOnTextChanged { text, start, before, count -> onTextChangeAction(0,text,ui.digit2) }
+        ui.digit2.doOnTextChanged { text, start, before, count -> onTextChangeAction(1,text,ui.digit3) }
+        ui.digit3.doOnTextChanged { text, start, before, count -> onTextChangeAction(2,text,ui.digit4) }
         ui.digit4.doOnTextChanged { text, start, before, count -> onTextChangeAction(3,text) }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View = ui.root
 
-    private fun onTextChangeAction(pos:Int,text:CharSequence?){
+    private fun onTextChangeAction(pos:Int,text:CharSequence?,next:View? = null){
         if(text != null){
             if(text.length == 1){
                 code.add(pos,text.toString())
+                next?.requestFocus()
             }
             else{
                 code.removeAt(pos)

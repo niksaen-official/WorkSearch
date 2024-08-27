@@ -24,7 +24,7 @@ class MainViewModel : ViewModel() {
 
     fun loadData(callback:()->Unit){
         if(vacancies.isEmpty()) {
-            disposable += accessToApi.mokSingleton.get()
+            disposable += accessToApi.mokSingleton.getResponse()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(

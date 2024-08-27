@@ -11,7 +11,7 @@ import com.niksaen.worksearch.localdatamanager.converters.ListConverter
 data class VacancyDbEntity(
     @Embedded("address") val address: Address,
     val questions: List<String>?,
-    val description: String? = "",
+    val description: String?,
     val title: String = "",
     @Embedded("experience")val experience: Experience,
     @Embedded("salary") val salary: Salary,
