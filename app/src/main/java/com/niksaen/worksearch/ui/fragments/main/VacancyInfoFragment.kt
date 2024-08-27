@@ -54,7 +54,7 @@ class VacancyInfoFragment : Fragment() {
         ui.company.text = vacancy.company
         ui.isFavorite.isChecked = vacancy.isFavorite
         ui.address.text = "${vacancy.address.town},${vacancy.address.street},${vacancy.address.house}"
-        ui.description.text = vacancy.description
+        ui.description.text = if(vacancy.description == null) "" else vacancy.description
         ui.responsibilities.text = vacancy.responsibilities
         ui.questionsList.adapter = QuestionAdapter(vacancy.questions!!){
             activity?.supportFragmentManager
